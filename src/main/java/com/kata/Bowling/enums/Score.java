@@ -2,12 +2,14 @@ package com.kata.Bowling.enums;
 
 public enum Score {
 
-    STRIKE("X"), SPARE("/"), MISS("-");
+    STRIKE("X", 2), SPARE("/", 1), MISS("-", 0);
 
     private final String symbol;
+    private final int frameLookAhead;
 
-    private Score(String symbol) {
+    private Score(String symbol, int frameLookAhead) {
         this.symbol = symbol;
+        this.frameLookAhead = frameLookAhead;
     }
 
     public static Score getScoreBySymbol(String symbol) {
@@ -22,6 +24,10 @@ public enum Score {
 
     public String getSymbol() {
         return this.symbol;
+    }
+
+    public int getFrameLookAhead() {
+        return this.frameLookAhead;
     }
 
 }
