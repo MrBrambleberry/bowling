@@ -19,4 +19,11 @@ public class ScoreTest {
     void each_score_returns_the_correct_frame_look_ahead(Score score, int frameLookAhead) {
         assertEquals(frameLookAhead, score.getFrameLookAhead());
     }
+
+    @ParameterizedTest
+    @CsvSource({ "X,10", "/,10", "9,9", "8,8", "7,7", "6,6", "5,5", "4,4", "3,3", "2,2", "1,1", "-,0" })
+    void each_symbol_reutrns_the_correct_pin_value(String symbol, int expectedScoreValue) {
+        Score score = Score.getScoreBySymbol(symbol);
+        assertEquals(expectedScoreValue, score.getPinValue());
+    }
 }
