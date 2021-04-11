@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class ScoreTest {
     @ParameterizedTest
     @CsvSource({ "STRIKE,X", "SPARE,/", "MISS,-" })
-    void get_score_by_symbol(Score score, String symbol) {
+    void get_score_by_symbol(Score score, char symbol) {
         assertEquals(score, Score.getScoreBySymbol(symbol));
     }
 
@@ -21,8 +21,8 @@ public class ScoreTest {
     }
 
     @ParameterizedTest
-    @CsvSource({ "X,10", "/,10", "9,9", "8,8", "7,7", "6,6", "5,5", "4,4", "3,3", "2,2", "1,1", "-,0" })
-    void each_symbol_reutrns_the_correct_pin_value(String symbol, int expectedScoreValue) {
+    @CsvSource({ "X,10", "/,0", "9,9", "8,8", "7,7", "6,6", "5,5", "4,4", "3,3", "2,2", "1,1", "-,0" })
+    void each_symbol_returns_the_correct_pin_value(char symbol, int expectedScoreValue) {
         Score score = Score.getScoreBySymbol(symbol);
         assertEquals(expectedScoreValue, score.getPinValue());
     }
